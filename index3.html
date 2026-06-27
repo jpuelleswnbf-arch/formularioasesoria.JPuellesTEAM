@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Registro | JPUELLES TEAM</title>
+    <link rel="icon" type="image/png" href="LOGO JPUELLES.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Permanent+Marker&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0a0a0a; 
+            color: #ffffff; 
+            overflow-x: hidden; 
+        }
+        
+        .bg-card { 
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .input-clean {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            border-radius: 0.75rem !important;
+            transition: all 0.2s ease;
+        }
+        
+        .input-clean:focus { 
+            border-color: #dc2626 !important; 
+            outline: none; 
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+        }
+
+        .input-clean option {
+            background-color: #ffffff;
+            color: #111111;
+        }
+        
+        .btn-red { 
+            background: linear-gradient(90deg, #ff0000, #cc0000) !important; 
+            color: #ffffff !important; 
+            transition: all 0.2s ease; 
+        }
+        
+        .btn-red:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        .step-panel { display: none; }
+        .step-panel.active { display: block; animation: fadeIn 0.4s; }
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(5px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        .graffiti-font { font-family: 'Permanent Marker', cursive; }
+
+        .professional-gallery img {
+            transition: all 0.4s ease;
+        }
+        .professional-gallery .gallery-link:hover img {
+            transform: scale(1.03);
+            filter: brightness(80%);
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #lightbox.active { display: flex; }
+        .lightbox-img-container {
+            position: relative;
+            max-w: 90vw;
+            max-height: 80vh;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+
+        .footer-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0000;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="pt-16 pb-8 text-center px-4">
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight uppercase italic text-white mb-6">
+            BIENVENIDO AL <span class="text-red-600">JPUELLES TEAM</span>
+        </h1>
+        <div class="max-w-2xl mx-auto cursor-pointer" onclick="openLightbox(0)">
+            <img src="https://i.ibb.co/KjCCZP9c/IMG-3719.jpg" alt="JPUELLES Team" class="w-full rounded-xl shadow-lg border border-white/10 hover:border-red-600/50 transition duration-300">
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-6">
+        <div class="bg-card p-6 md:p-10 rounded-2xl shadow-2xl">
+            
+            <!-- IFRAME INTEGRADO EXACTAMENTE IGUAL A TU EJEMPLO -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { handleSuccess(); }"></iframe>
+
+            <!-- FORMULARIO CONFIGURADO CON REDIRECCIÓN NATUVA AL IFRAME -->
+            <form id="registroForm" action="https://docs.google.com/forms/d/e/1FAIpQLScu1fdXoXCW1BxJS4UaZ_pd0bNd26SYpBXI4ORffeR7eB8-mw/formResponse" method="POST" target="hidden_iframe" accept-charset="UTF-8" onsubmit="return handleRegistroSubmit(event)" class="space-y-6">
+                <input type="hidden" name="entry.1427631119_year" id="birthYear">
+                <input type="hidden" name="entry.1427631119_month" id="birthMonth">
+                <input type="hidden" name="entry.1427631119_day" id="birthDay">
+                <input type="hidden" name="fvv" value="1">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="submissionTimestamp" value="-1">
+                
+                <!-- BLOQUE 1 -->
+                <div class="step-panel active" data-step="1">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 1: DATOS PERSONALES</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Nombre completo *</label>
+                            <input type="text" name="entry.451686271" required class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Fecha de nacimiento *</label>
+                                <input type="date" id="birthDate" required class="w-full input-clean py-3 px-4">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Edad</label>
+                                <input type="text" name="entry.1637602764" class="w-full input-clean py-3 px-4">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Teléfono *</label>
+                                <input type="text" name="entry.598993403" required class="w-full input-clean py-3 px-4">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Email</label>
+                                <input type="email" name="entry.1288613945" class="w-full input-clean py-3 px-4">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Dirección</label>
+                            <input type="text" name="entry.1497471590" class="w-full input-clean py-3 px-4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2 -->
+                <div class="step-panel" data-step="2">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 2: COMPOSICIÓN FÍSICA</h2>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Peso (kg) *</label>
+                            <input type="text" name="entry.1893950982" required class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Altura (cm) *</label>
+                            <input type="text" name="entry.1762568158" required class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">IMC</label>
+                            <input type="text" name="entry.1933292316" class="w-full input-clean py-3 px-4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3 -->
+                <div class="step-panel" data-step="3">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 3: HISTORIAL MÉDICO</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Tiene alguna lesión actual o previa? *</label>
+                            <textarea name="entry.1707911142" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Padece alguna enfermedad o condición médica? *</label>
+                            <textarea name="entry.1009929325" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Tiene algún impedimento físico para realizar ejercicio? *</label>
+                            <textarea name="entry.1538796098" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Toma alguna medicación actualmente? *</label>
+                            <textarea name="entry.1664344103" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 4 -->
+                <div class="step-panel" data-step="4">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 4: NUTRICIÓN</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Tiene alguna alergia alimentaria? *</label>
+                            <textarea name="entry.1664191419" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Alimentos que sientan mal</label>
+                            <input type="text" name="entry.1917542262" class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Dieta especial</label>
+                            <select name="entry.1709062175" class="w-full input-clean py-3 px-4">
+                                <option value="">Selecciona una opción</option>
+                                <option value="No">No</option>
+                                <option value="Vegetariana">Vegetariana</option>
+                                <option value="Vegana">Vegana</option>
+                                <option value="Sin gluten">Sin gluten</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Calorías actuales</label>
+                            <input type="text" name="entry.1208167631" class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Toma algún tipo de suplementación deportiva? *</label>
+                            <textarea name="entry.1058918469" required rows="2" placeholder="Especifica detalladamente o escribe 'No'" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Qué sueles comer a lo largo de la semana? *</label>
+                            <textarea name="entry.1446814103" required rows="3" placeholder="Describe brevemente tu alimentación habitual" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 5 -->
+                <div class="step-panel" data-step="5">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 5: OBJETIVOS</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Finalidad</label>
+                            <select name="entry.711419566" class="w-full input-clean py-3 px-4">
+                                <option value="">Selecciona una opción</option>
+                                <option value="Pérdida de peso">Pérdida de peso</option>
+                                <option value="Ganancia muscular">Ganancia muscular</option>
+                                <option value="Tonificación">Tonificación</option>
+                                <option value="Mejorar condición física">Mejorar condición física</option>
+                                <option value="Rehabilitación">Rehabilitación</option>
+                                <option value="Rendimiento deportivo">Rendimiento deportivo</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Descripción detallada de objetivos: *</label>
+                            <textarea name="entry.23402145" required rows="3" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Cómo crees que yo te puedo ayudar a conseguir tu objetivo y por qué? *</label>
+                            <textarea name="entry.1674034073" required rows="3" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 6 -->
+                <div class="step-panel" data-step="6">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-6 border-b border-white/10 pb-2">BLOQUE 6: EXPERIENCIA</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Ha entrenado anteriormente? *</label>
+                            <textarea name="entry.321710646" required rows="2" placeholder="Especifica cuánto tiempo o nivel de experiencia" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Cómo entrenas ahora</label>
+                            <textarea name="entry.2072019618" rows="2" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Gimnasio/Máquinas</label>
+                            <input type="text" name="entry.911133545" class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Pesos y repeticiones básicos</label>
+                            <input type="text" name="entry.1424324527" class="w-full input-clean py-3 px-4">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Cuánto tiempo puedes dedicar al entrenamiento a la semana? *</label>
+                                <input type="text" name="entry.754279076" required class="w-full input-clean py-3 px-4">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">¿Cuánto tiempo tienes por entrenamiento? *</label>
+                                <input type="text" name="entry.1293762947" required class="w-full input-clean py-3 px-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 7 -->
+                <div class="step-panel" data-step="7">
+                    <h2 class="text-xl font-black uppercase text-red-600 mb-4 border-b border-white/10 pb-2">BLOQUE 7: DECLARACIÓN Y FIRMA</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Observaciones</label>
+                            <textarea name="entry.455559103" rows="2" class="w-full input-clean py-3 px-4"></textarea>
+                        </div>
+                        
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-xl text-xs text-gray-300 h-48 overflow-y-auto font-bold leading-relaxed select-none">
+                            DECLARACIÓN Y EXENCIÓN DE RESPONSABILIDAD:<br><br>
+                            Declaro que la información proporcionada es verdadera y completa. Me comprometo a informar inmediatamente sobre cualquier cambio en mi condición física o de salud que pueda afectar mi entrenamiento. Todo lo que en este documento se aporta servirá para realizar las recomendaciones y/o consejos para los que el cliente ha buscado ser asesorado, entendiendo que en ningún caso se trata de un seguimiento médico enfocado a tratar o prevenir ninguna enfermedad.<br><br>
+                            Asimismo, reconozco y acepto que:<br>
+                            - He sido informado/a de que todo programa de entrenamiento físico conlleva ciertos riesgos inherentes, incluyendo, pero no limitándose a, lesiones musculares, articulares, cardiovasculares o de otro tipo.<br>
+                            - Asumo voluntariamente dichos riesgos y libero a Jorge Puelles de cualquier responsabilidad derivada de daños o lesiones que puedan producirse como consecuencia de la práctica de los ejercicios indicados, siempre que estos ocurran dentro de un marco de uso adecuado y seguro.<br>
+                            - Me comprometo a seguir las recomendaciones, respetar las pautas de seguridad y comunicar inmediatamente cualquier molestia, dolor o síntoma inusual durante la realización de los ejercicios.<br>
+                            - Autorizo el tratamiento de mis datos personales relacionados con mi salud, progreso y evaluación física exclusivamente con fines de planificación, seguimiento y control del programa de entrenamiento, de acuerdo con la normativa vigente sobre protección de datos.
+                        </div>
+
+                        <div class="flex items-start gap-3 mt-4">
+                            <input type="checkbox" id="legalCheck" name="entry.93856112" value="Sí, acepto los términos y confirmo mi identidad." required class="w-5 h-5 accent-red-600 cursor-pointer mt-0.5">
+                            <label for="legalCheck" class="text-sm font-bold text-gray-300 cursor-pointer select-none">
+                                Declaro haber leído y comprendido el contenido de esta declaración, aceptando todos sus términos. *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTONERA CONTROLADA -->
+                <div class="flex justify-between items-center pt-6">
+                    <button type="button" id="btnPrev" class="px-6 py-3 bg-white/10 text-gray-300 font-bold rounded-lg uppercase text-xs invisible hover:bg-white/20 transition">Anterior</button>
+                    <!-- El botón cambia dinámicamente de tipo 'button' a tipo 'submit' en el paso final -->
+                    <button type="button" id="btnNext" class="px-8 py-3 btn-red font-black rounded-lg uppercase text-sm w-full md:w-auto">Siguiente</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- GALERÍA PROFESIONAL -->
+    <div class="max-w-7xl mx-auto px-4 md:px-8 mt-12 mb-16">
+        <div class="grid grid-cols-3 gap-3 md:gap-6 professional-gallery">
+            <div class="gallery-link cursor-pointer" onclick="openLightbox(1)">
+                <img src="https://i.ibb.co/Pks996s/IMG-3725.jpg" class="w-full aspect-[3/4] object-cover object-top rounded-xl border border-white/10 shadow-xl">
+            </div>
+            <div class="gallery-link cursor-pointer" onclick="openLightbox(2)">
+                <img src="https://i.ibb.co/4R9ttfKc/Dise-o-sin-t-tulo-1.png" class="w-full aspect-[3/4] object-cover object-top rounded-xl border border-white/10 shadow-xl">
+            </div>
+            <div class="gallery-link cursor-pointer" onclick="openLightbox(3)">
+                <img src="https://i.ibb.co/LqLsYyX/Dise-o-sin-t-tulo-3.png" class="w-full aspect-[3/4] object-cover object-top rounded-xl border border-white/10 shadow-xl">
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN TRABAJA EN SILENCIO -->
+    <section class="py-16 bg-red-600 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-black italic uppercase tracking-tighter leading-tight text-black">
+                TRABAJA EN SILENCIO,<br>
+                DEJA QUE TUS RESULTADOS HABLEN.
+            </h2>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+        <button onclick="closeLightbox()" class="absolute top-8 right-8 text-white text-4xl hover:text-red-600 transition z-[1010] p-2">
+            <i class="fas fa-times"></i>
+        </button>
+        <button onclick="prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl transition z-[1010] p-4">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl transition z-[1010] p-4">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-img-container flex flex-col items-center">
+            <img id="lightboxImg" class="lightbox-img" src="" alt="Vista ampliada">
+            <div id="lightboxCaption" class="mt-6 text-center text-white font-black uppercase italic tracking-wider text-lg px-4"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DE ÉXITO -->
+    <div id="successModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-8 md:p-12 text-center relative max-w-md w-[90%] border-t-4 border-red-600 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-red-600 transition text-2xl font-bold">&times;</button>
+            <div class="w-16 h-16 bg-red-600 text-white flex items-center justify-center rounded-full mx-auto mb-6">
+                <i class="fas fa-check text-2xl"></i>
+            </div>
+            <h3 class="text-3xl font-black uppercase tracking-[-0.05em] mb-4 text-black">¡RECIBIDO!</h3>
+            <p class="text-zinc-600 font-medium text-lg">Gracias por rellenar el cuestionario. En breve recibirás todo tu plan personalizado para empezar a transformar tu físico.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-16 bg-zinc-950 border-t border-white/5 text-center px-6">
+        <img src="https://i.ibb.co/bgr9L1Qc/Untitled-design.jpg" alt="JPUELLES Avatar" class="footer-avatar">
+        <div class="text-2xl font-black italic mb-2">
+            <span class="text-white">JP</span><span class="text-red-600">UELLES</span>
+        </div>
+        <div class="graffiti-font text-sm mb-8">
+            <span class="text-white">Shut up,</span> <span class="text-red-600">I’m working on my dreams</span>
+        </div>
+        <div class="flex justify-center space-x-8 mb-8">
+            <a href="https://www.instagram.com/jorgepuelles.team?igsh=M3dwdndoMzIzMHg1&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://www.tiktok.com/@jorgepuelles.team?_r=1&_t=ZN-96Dkhfmz5Lr" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition"><i class="fab fa-tiktok fa-lg"></i></a>
+            <a href="https://wa.me/34618207730?text=Hola,%20cu%C3%A9ntame%20mas%20sobre%20JPuelles%20TEAM" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest font-bold mt-1">
+            © 2026 JPUELLES TEAM | NATURAL MEN'S PHYSIQUE WNBF
+        </p>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 7;
+        let submitted = false;
+
+        const form = document.getElementById('registroForm');
+        const btnNext = document.getElementById('btnNext');
+        const btnPrev = document.getElementById('btnPrev');
+
+        function handleRegistroSubmit(event) {
+            if (currentStep !== totalSteps) {
+                event.preventDefault();
+                return false;
+            }
+
+            prepareGoogleFormPayload();
+            submitted = true;
+            btnNext.innerText = "ENVIANDO...";
+            return true;
+        }
+
+        function prepareGoogleFormPayload() {
+            const birthDate = document.getElementById('birthDate').value;
+            if (birthDate) {
+                const [year, month, day] = birthDate.split('-');
+                document.getElementById('birthYear').value = year;
+                document.getElementById('birthMonth').value = String(Number(month));
+                document.getElementById('birthDay').value = String(Number(day));
+            }
+        }
+
+        // Controlamos el avance de bloques con validación estricta
+        btnNext.addEventListener('click', (e) => {
+            if(form.classList.contains('locked')) return;
+            
+            const currentPanel = document.querySelector(`.step-panel[data-step="${currentStep}"]`);
+            const requiredInputs = currentPanel.querySelectorAll('[required]');
+            let valid = true;
+            requiredInputs.forEach(i => { if(!i.reportValidity()) valid = false; });
+            if(!valid) return;
+
+            if(currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            } else {
+                if(document.getElementById('legalCheck').checked) {
+                    return true;
+                } else {
+                    e.preventDefault();
+                    document.getElementById('legalCheck').reportValidity();
+                }
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if(currentStep > 1) { 
+                currentStep--; 
+                updateUI(); 
+            }
+        });
+
+        function updateUI() {
+            document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+            document.querySelector(`.step-panel[data-step="${currentStep}"]`).classList.add('active');
+            
+            btnPrev.classList.toggle('invisible', currentStep === 1);
+            btnNext.type = currentStep === totalSteps ? "submit" : "button";
+            btnNext.innerText = currentStep === totalSteps ? "FIRMAR Y ENVIAR" : "Siguiente";
+        }
+
+        updateUI();
+
+        // Esta función se ejecuta exactamente cuando el iframe oculto confirma la carga nativa
+        function handleSuccess() {
+            document.getElementById('successModal').classList.remove('hidden');
+            form.classList.add('locked');
+            btnNext.disabled = true;
+            btnPrev.disabled = true;
+            form.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // LIGHTBOX
+        const galleryImages = [
+            { url: "https://i.ibb.co/KjCCZP9c/IMG-3719.jpg", caption: "PREPARACION CAMPEONATO DE ESPAÑA WNBF 2025" },
+            { url: "https://i.ibb.co/Pks996s/IMG-3725.jpg", caption: "CLASIFICATORIO WNBF TARRAGONA 2025" },
+            { url: "https://i.ibb.co/4R9ttfKc/Dise-o-sin-t-tulo-1.png", caption: "CAMPEONATO DE ESPAÑA WNBF MENS PHYSIQUE 2025" },
+            { url: "https://i.ibb.co/LqLsYyX/Dise-o-sin-t-tulo-3.png", caption: "CAMPEONATO DE ESPAÑA WNBF MENS PHYSIQUE 2025" }
+        ];
+
+        let currentImgIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        function openLightbox(index) {
+            currentImgIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        function updateLightbox() {
+            lightboxImg.src = galleryImages[currentImgIndex].url;
+            lightboxCaption.innerText = galleryImages[currentImgIndex].caption;
+        }
+        function nextImage() {
+            currentImgIndex = (currentImgIndex + 1) % galleryImages.length;
+            updateLightbox();
+        }
+        function prevImage() {
+            currentImgIndex = (currentImgIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+        });
+    </script>
+</body>
+</html>
