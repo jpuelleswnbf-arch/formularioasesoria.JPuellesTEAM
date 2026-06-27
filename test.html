@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Google Forms JPUELLES</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 32px; background: #111; color: #fff; }
+    button { padding: 14px 18px; background: #dc2626; color: #fff; border: 0; font-weight: 900; cursor: pointer; }
+    input, textarea, select { display: block; margin: 8px 0 14px; padding: 10px; width: min(460px, 100%); }
+  </style>
+</head>
+<body>
+  <h1>Test envio directo a Google Forms</h1>
+  <p>Al pulsar enviar debe llegar una respuesta marcada como TEST GITHUB DIRECTO.</p>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('status').textContent='Enviado. Revisa Google Forms.';}"></iframe>
+
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLScu1fdXoXCW1BxJS4UaZ_pd0bNd26SYpBXI4ORffeR7eB8-mw/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true; return true;">
+    <input type="hidden" name="entry.1427631119_year" value="2026">
+    <input type="hidden" name="entry.1427631119_month" value="6">
+    <input type="hidden" name="entry.1427631119_day" value="25">
+    <input type="hidden" name="fvv" value="1">
+    <input type="hidden" name="pageHistory" value="0">
+    <input type="hidden" name="submissionTimestamp" value="-1">
+
+    <input name="entry.451686271" value="TEST GITHUB DIRECTO - borrar">
+    <input name="entry.1637602764" value="99">
+    <input name="entry.598993403" value="600000000">
+    <input name="entry.1288613945" value="test@example.com">
+    <input name="entry.1497471590" value="TEST">
+    <input name="entry.1893950982" value="80">
+    <input name="entry.1762568158" value="180">
+    <input name="entry.1933292316" value="24.7">
+    <textarea name="entry.1707911142">No - TEST</textarea>
+    <textarea name="entry.1009929325">No - TEST</textarea>
+    <textarea name="entry.1538796098">No - TEST</textarea>
+    <textarea name="entry.1664344103">No - TEST</textarea>
+    <textarea name="entry.1664191419">No - TEST</textarea>
+    <input name="entry.1917542262" value="TEST">
+    <select name="entry.1709062175"><option selected value="Vegana">Vegana</option></select>
+    <input name="entry.1208167631" value="2500">
+    <textarea name="entry.1058918469">No - TEST</textarea>
+    <textarea name="entry.1446814103">TEST</textarea>
+    <select name="entry.711419566"><option selected value="Tonificación">Tonificación</option></select>
+    <textarea name="entry.23402145">TEST</textarea>
+    <textarea name="entry.1674034073">TEST</textarea>
+    <textarea name="entry.321710646">TEST</textarea>
+    <textarea name="entry.2072019618">TEST</textarea>
+    <input name="entry.911133545" value="TEST">
+    <input name="entry.1424324527" value="TEST">
+    <input name="entry.754279076" value="3">
+    <input name="entry.1293762947" value="60">
+    <textarea name="entry.455559103">TEST GITHUB DIRECTO - borrar</textarea>
+    <label><input type="checkbox" name="entry.93856112" value="Sí, acepto los términos y confirmo mi identidad." checked> Acepto</label>
+    <br><br>
+    <button type="submit">Enviar test</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    let submitted = false;
+  </script>
+</body>
+</html>
